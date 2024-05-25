@@ -26,7 +26,7 @@ function Get-StreamTitle
         $ffmpegMetadata = ffmpeg -i $url 2>&1
         $streamTitle = $ffmpegMetadata | Select-String "StreamTitle"
         $extractedName = $streamTitle -replace '.*: (.*)', '$1'
-		$sanitizedName = $extractedName -replace ':|;|&|\\|/|\?|!|\||''|""|@|\+|=|<|>|\$|%|#|{|}|\s', ''
+        $sanitizedName = $extractedName -replace ':|;|&|\\|/|\?|!|\||''|""|@|\+|=|<|>|\$|%|#|{|}|\s', ''
         return $sanitizedName
     }
     catch
